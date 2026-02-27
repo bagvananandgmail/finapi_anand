@@ -107,7 +107,7 @@ def list_csv_reports():
         return jsonify({"error": str(e)}), 500
 
 # IMPORTANT: No app.run() when deploying to Azure Linux App Service
-@app.route('/high-cpu')
+@app.route('/high-cpu', methods=["GET"])
 def high_cpu():
     import math
     # Simulate CPU load by calculating primes
@@ -123,7 +123,7 @@ def high_cpu():
             primes.append(num)
     return f"Calculated {len(primes)} prime numbers."
 
-@app.route('/high-memory')
+@app.route('/high-memory', methods=["GET"])
 def high_memory():
     # Simulate memory load
     data = ['x' * 1024 * 1024] * 500  # ~500MB in-memory array
